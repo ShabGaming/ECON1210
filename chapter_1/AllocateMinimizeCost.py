@@ -58,7 +58,9 @@ def AllocateMinimizeCost(NumOfHours, cost_df, BenefitPerResource=None):
             if hours > 0
         )
 
-    return minimize_allocation_result + maximize_allocation_result
+    output = minimize_allocation_result + maximize_allocation_result
+
+    return output
 
 
 AllocateMinimizeCost(arg1, arg2, arg3)
