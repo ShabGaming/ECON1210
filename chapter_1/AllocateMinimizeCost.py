@@ -14,6 +14,8 @@ def AllocateMinimizeCost(NumOfHours, cost_df, BenefitPerResource=None):
     if cost_df.columns[0] != 'Hours':
         cost_df.rename(columns={cost_df.columns[0]: 'Hours'}, inplace=True)
 
+    print(cost_df.head())
+
     # Calculate marginal costs
     marginal_costs = cost_df.iloc[:, 1:].diff().fillna(cost_df.iloc[:, 1:])
 
