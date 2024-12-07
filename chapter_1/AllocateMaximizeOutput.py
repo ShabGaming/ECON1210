@@ -51,7 +51,7 @@ def AllocateMaximizeOutput(NumOfWorkerHired, production_df, ProduceAtleast=None)
     if min_workers_required:
         min_workers, allocation = min_workers_required
         allocation_string = ", ".join([f"{allocation[line]} to {line}" for line in allocation])
-        result += f"\nMust allocate at least {min_workers} workers, where {allocation_string}."
+        result += f" | Must allocate at least {min_workers} workers, where {allocation_string}."
 
     return result
 
