@@ -3,7 +3,10 @@ import pandas as pd
 def AllocateMinimizeCost(NumOfHours, cost_df, BenefitPerResource=None):
 
     # The first row are the headers
-    # cost_df.columns = cost_df.iloc[0]
+    cost_df.columns = cost_df.iloc[0]
+    cost_df = cost_df[1:]
+
+    print(cost_df.head())
 
     # Calculate marginal costs
     marginal_costs = cost_df.iloc[:, 1:].diff().fillna(cost_df.iloc[:, 1:])
