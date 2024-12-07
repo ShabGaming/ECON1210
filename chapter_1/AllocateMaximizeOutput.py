@@ -1,7 +1,7 @@
 import pandas as pd
 
 def AllocateMaximizeOutput(NumOfWorkerHired, production_df, ProduceAtleast=None):
-    print(production_df.head())
+
 
     # Drop first column
     production_df = production_df.drop(production_df.columns[0], axis=1)
@@ -15,7 +15,7 @@ def AllocateMaximizeOutput(NumOfWorkerHired, production_df, ProduceAtleast=None)
     
     # Parse the input production dataframe
     lines = production_df.set_index('Number of Workers').to_dict(orient='list')
-
+    print(production_df.head())
     # Function to calculate marginal outputs
     def calculate_marginal_output(workers_allocated):
         marginal_outputs = {}
