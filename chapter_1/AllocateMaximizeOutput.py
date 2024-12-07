@@ -7,6 +7,10 @@ def AllocateMaximizeOutput(NumOfWorkerHired, production_df, ProduceAtleast=None)
     production_df = production_df[1:]
 
     print(production_df)
+
+    # Check the name of the first column, if it is not 'Number of Workers', then rename it
+    if production_df.columns[0] != 'Number of Workers':
+        production_df.rename(columns={production_df.columns[0]: 'Number of Workers'}, inplace=True)
     
     # Parse the input production dataframe
     lines = production_df.set_index('Number of Workers').to_dict(orient='list')
