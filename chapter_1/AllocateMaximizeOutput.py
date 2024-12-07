@@ -2,6 +2,16 @@ import pandas as pd
 
 def AllocateMaximizeOutput(NumOfWorkerHired, production_df, ProduceAtleast=None):
     print(production_df.head())
+
+    # Drop first column
+    production_df = production_df.drop(production_df.columns[0], axis=1)
+
+    # Drop the first row as the column names are on the second row
+    production_df = production_df.drop(0, axis=0)
+
+    # Set the first column name to Number of Workers if it is not already
+    if production_df.columns[0] != 'Number of Workers':
+        production_df.columns.values[0] = 'Number of Workers'
     
     # Parse the input production dataframe
     lines = production_df.set_index('Number of Workers').to_dict(orient='list')
