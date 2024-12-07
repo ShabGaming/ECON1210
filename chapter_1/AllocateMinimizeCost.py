@@ -4,17 +4,6 @@ def AllocateMinimizeCost(NumOfHours, cost_df, BenefitPerResource=None):
 
     # The first row are the headers
     cost_df.columns = cost_df.iloc[0]
-    cost_df = cost_df[1:]
-
-    # if NumOfHours is not a number, or is empty, and if cost_df is not a dataframe, or is empty, return nothing
-    if not isinstance(NumOfHours, int) or NumOfHours <= 0 or not isinstance(cost_df, pd.DataFrame) or cost_df.empty:
-        return None
-    
-    # Check the name of the first column, if it is not 'Hours', then rename it
-    if cost_df.columns[0] != 'Hours':
-        cost_df.rename(columns={cost_df.columns[0]: 'Hours'}, inplace=True)
-
-    print(cost_df.head())
 
     # Calculate marginal costs
     marginal_costs = cost_df.iloc[:, 1:].diff().fillna(cost_df.iloc[:, 1:])
@@ -60,9 +49,7 @@ def AllocateMinimizeCost(NumOfHours, cost_df, BenefitPerResource=None):
             if hours > 0
         )
 
-    output = minimize_allocation_result + maximize_allocation_result
-
-    return output
+    return minimize_allocation_result + maximize_allocation_result
 
 
 AllocateMinimizeCost(arg1, arg2, arg3)
