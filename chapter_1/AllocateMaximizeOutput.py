@@ -1,6 +1,8 @@
 import pandas as pd
 
 def AllocateMaximizeOutput(NumOfWorkerHired, production_df, ProduceAtleast=None):
+    print(production_df.head())
+    
     # Parse the input production dataframe
     lines = production_df.set_index('Number of Workers').to_dict(orient='list')
 
