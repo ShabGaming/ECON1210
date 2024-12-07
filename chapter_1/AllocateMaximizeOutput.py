@@ -6,7 +6,9 @@ def AllocateMaximizeOutput(NumOfWorkerHired, production_df, ProduceAtleast=None)
     production_df.columns = production_df.iloc[0]
     production_df = production_df[1:]
 
-    print(production_df)
+    # if NumOfWorkerHired is not a number, or is empty, and if production_df is not a dataframe, or is empty, return nothing
+    if not isinstance(NumOfWorkerHired, int) or NumOfWorkerHired <= 0 or not isinstance(production_df, pd.DataFrame) or production_df.empty:
+        return None
 
     # Check the name of the first column, if it is not 'Number of Workers', then rename it
     if production_df.columns[0] != 'Number of Workers':
