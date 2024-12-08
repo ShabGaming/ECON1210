@@ -51,7 +51,7 @@ def AllocateMinimizeCost(NumOfHours, cost_df, BenefitPerResource=None):
                 else:
                     break
 
-        maximize_allocation_result = "\nTo maximize economic surplus allocate " + ", ".join(
+        maximize_allocation_result = "\n | To maximize economic surplus allocate " + ", ".join(
             f"{worker}: {hours} hour{'s' if hours > 1 else ''}"
             for worker, hours in surplus_allocation.items()
             if hours > 0
