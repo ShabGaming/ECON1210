@@ -1,6 +1,16 @@
 import pandas as pd
 
-def calculate_production(working_time, num_assigned, item, df):  
+def calculate_production(working_time, num_assigned, item, df):
+    if df is None:
+        return ""
+    
+    # Set the first row as column headers
+    df.columns = df.iloc[0]
+    # Remove the first row
+    df = df[1:]
+    # Reset the index to start from 0
+    df = df.reset_index(drop=True)
+
     # Validate that the 'Person' column exists
     if 'Person' not in df.columns:
         return ""
