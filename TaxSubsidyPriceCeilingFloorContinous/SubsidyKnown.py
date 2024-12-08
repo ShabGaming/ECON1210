@@ -214,7 +214,8 @@ def Subsidy(demand_eq, supply_eq, subsidy, To_Whom='C'):
     
     result = []
     result.append(f"Market equilibrium price: {float(P0):.2f}, Quantity: {float(Q0):.2f}")
-    result.append(f"After subsidy buyers pay: {float(buyer_price_after):.2f} (less by {float(buyer_paying_less_by):.2f}) and sellers make: {float(seller_price_after):.2f} (more by {float(seller_receiving_more_by):.2f})")
+    result.append(f"After subsidy buyers pay: {float(buyer_price_after):.2f} (less by {float(buyer_paying_less_by):.2f}")
+    result.append(f"After subsidy sellers make: {float(seller_price_after):.2f} (more by {float(seller_receiving_more_by):.2f}")
     result.append(f"Cost of Subsidy to Gov: {float(gov_cost):.2f}, DWL: {float(DWL):.2f}")
     
     if To_Whom is not None:
