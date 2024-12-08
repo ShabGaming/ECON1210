@@ -76,22 +76,4 @@ def calculate_production(working_time, item_name, number_of_item, df):
 
     return result
 
-
-# Create the DataFrame based on the problem
-data = {
-    'Person': ['Clara', 'Kant', 'Leo'],
-    'hat': [15, 17, 9],
-    'tie': [7.65, 11.54, 23.33]
-}
-
-df = pd.DataFrame(data)
-
-# Parameters
-working_time = 630  # minutes per day
-item_name = 'hat'
-number_of_item = 69
-
-# Calculate production
-production = calculate_production(working_time, item_name, number_of_item, df)
-
-print(production)
+calculate_production(arg1, arg2, arg3, arg4)
