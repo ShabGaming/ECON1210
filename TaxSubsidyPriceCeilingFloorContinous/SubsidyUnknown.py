@@ -20,6 +20,9 @@ def is_linear(expr, var):
     return expr.diff(var, 2) == 0
 
 def CalculateSubsidy(demand_eq: str, supply_eq: str, increase_Q=None, max_DWL=None, max_Expense=None):
+    if demand_eq == None or supply_eq == None:
+        return ""
+    
     P, s = symbols('P s', real=True)
     
     def parse_equation(eq_str):
@@ -149,8 +152,4 @@ def CalculateSubsidy(demand_eq: str, supply_eq: str, increase_Q=None, max_DWL=No
 
     return "\n".join(results)
 
-# Test the code:
-demand = "Q = 9400 - 1000P"
-supply = "Q = 1000P - 3600"
-res = CalculateSubsidy(demand, supply, max_Expense=49875)
-print(res)
+CalculateSubsidy(arg1, arg2, arg3, arg4, arg5)
