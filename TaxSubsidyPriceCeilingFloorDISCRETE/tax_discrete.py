@@ -4,8 +4,7 @@ def TaxDiscrete(tax, df):
 
     df.columns = df.iloc[0]
     df = df[1:]
-
-    print(df)
+    df = df.reset_index(drop=True)
 
     # If tax is empty or not a number, or df is empty or not numeric reutrn nothing
     if not isinstance(tax, (int, float)) or tax < 0:

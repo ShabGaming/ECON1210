@@ -2,10 +2,12 @@ import pandas as pd
 
 def SubsidyDiscrete(subsidy, df):
 
+    # Set the first row as column headers
     df.columns = df.iloc[0]
+    # Remove the first row
     df = df[1:]
-
-    print(df)
+    # Reset the index to start from 0
+    df = df.reset_index(drop=True)
 
     # If subsidy is empty or not a number, or df is empty or not numeric reutrn nothing
     if not isinstance(subsidy, (int, float)) or subsidy < 0:

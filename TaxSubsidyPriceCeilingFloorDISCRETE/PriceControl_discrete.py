@@ -28,7 +28,7 @@ def PriceControl(price_ceiling=None, price_floor=None, df=None):
         for i in range(len(df)):
             if df.loc[i, 'Price'] <= price_ceiling:
                 quantity_transacted = min(df.loc[i, 'Quantity Demanded'], df.loc[i, 'Quantity Supplied'])
-                ceiling_result = f"Price Ceiling: {price_ceiling}, Quantity Transacted: {quantity_transacted}"
+                ceiling_result = f"At Price Ceiling: {price_ceiling}, Quantity Transacted: {quantity_transacted} | "
                 break
 
     # Handle price floor
