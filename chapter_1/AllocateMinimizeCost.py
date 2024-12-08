@@ -1,22 +1,17 @@
 import pandas as pd
 
-def makedf(df):
-    df.columns = df.iloc[0]
-    # Convert all values to floats
-    for col in df.columns[1:]:
-        df[col] = df[col].str.replace(',', '').astype(float)
-
-    return df[1:]
-
-
 def AllocateMinimizeCost(NumOfHours, cost_df, BenefitPerResource=None):
-    print(cost_df.head())
+    # Ensure the input dataframe has proper headers
+    cost_df.columns = cost_df.iloc[0]
+    cost_df = cost_df[1:]
 
-    # Check if the input is valid
+    # Validate inputs
     if not isinstance(NumOfHours, int) or NumOfHours <= 0 or not isinstance(cost_df, pd.DataFrame) or cost_df.empty:
         return None
-    
-    cost_df = makedf(cost_df)
+
+    # Check and rename the first column if necessary
+    if cost_df.columns[0] != 'Number of Hours':
+        cost_df.rename(columns={cost_df.columns[0]: 'Number of Hours'}, inplace=True)
 
     # Calculate marginal costs
     marginal_costs = cost_df.iloc[:, 1:].diff().fillna(cost_df.iloc[:, 1:])
@@ -24,8 +19,8 @@ def AllocateMinimizeCost(NumOfHours, cost_df, BenefitPerResource=None):
     # Flatten marginal costs to allocate for minimizing cost
     flattened_costs = []
     for col in marginal_costs.columns:
-        flattened_costs.extend([(marginal_costs.at[i, col], i + 1, col) for i in range(len(marginal_costs))])
-    
+        flattened_costs.extend([(marginal_costs.iat[i, marginal_costs.columns.get_loc(col)], i + 1, col) for i in range(len(marginal_costs))])
+
     # Sort by marginal cost
     flattened_costs.sort()
 
@@ -47,11 +42,11 @@ def AllocateMinimizeCost(NumOfHours, cost_df, BenefitPerResource=None):
 
     # Economic surplus calculation if BenefitPerResource is provided
     if BenefitPerResource:
-        surplus_allocation = {worker: 0 for worker in cost_df.columns[1:]}
+        surplus_allocation = {worker: 0 for worker in cost_df.columns[1:]}  # Reset allocation for surplus
 
         for worker in cost_df.columns[1:]:
             for hour in range(len(cost_df)):
-                if BenefitPerResource >= marginal_costs.at[hour, worker]:
+                if BenefitPerResource >= marginal_costs.iat[hour, marginal_costs.columns.get_loc(worker)]:
                     surplus_allocation[worker] = hour + 1
                 else:
                     break
@@ -65,4 +60,4 @@ def AllocateMinimizeCost(NumOfHours, cost_df, BenefitPerResource=None):
     return minimize_allocation_result + maximize_allocation_result
 
 
-AllocateMinimizeCost(arg1, arg2, arg3)
+AllocateMinimizeCost(6, cost_df, BenefitPerResource=342.7)
