@@ -7,6 +7,13 @@ def PerfectPriceDiscrimination(df, MC, FixedCost=None, CouponBreakPoint=None):
     if FixedCost is None:
         FixedCost = 0
 
+    # Set the first row as column headers
+    df.columns = df.iloc[0]
+    # Remove the first row
+    df = df[1:]
+    # Reset the index to start from 0
+    df = df.reset_index(drop=True)
+
     # Ensure DataFrame has the required columns
     if 'WTP' not in df.columns:
         raise ValueError("The DataFrame must have a 'WTP' column.")
