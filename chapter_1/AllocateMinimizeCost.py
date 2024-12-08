@@ -2,9 +2,10 @@ import pandas as pd
 
 def makedf(df):
     df.columns = df.iloc[0]
-    # Make sure all values are integers except for the headers
-    for col in df.columns:
-        df[col] = pd.to_numeric(df[col], errors='coerce')
+    # Convert all values to floats
+    for col in df.columns[1:]:
+        df[col] = df[col].str.replace(',', '').astype(float)
+
     return df[1:]
 
 
@@ -15,7 +16,7 @@ def AllocateMinimizeCost(NumOfHours, cost_df, BenefitPerResource=None):
     if not isinstance(NumOfHours, int) or NumOfHours <= 0 or not isinstance(cost_df, pd.DataFrame) or cost_df.empty:
         return None
     
-    makedf(cost_df)
+    cost_df = makedf(cost_df)
 
     # Calculate marginal costs
     marginal_costs = cost_df.iloc[:, 1:].diff().fillna(cost_df.iloc[:, 1:])
