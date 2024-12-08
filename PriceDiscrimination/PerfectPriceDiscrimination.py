@@ -32,7 +32,7 @@ def PerfectPriceDiscrimination(df, MC, FixedCost=None, CouponBreakPoint=None):
     
     # If no coupon break point is given, we're done.
     if CouponBreakPoint is None:
-        return
+        return output
     
     # If coupon break point is given:
     # Split customers into high and low groups
@@ -120,11 +120,9 @@ def PerfectPriceDiscrimination(df, MC, FixedCost=None, CouponBreakPoint=None):
     # DWL = TS_ppd - TS_coupon
     DWL = TS_ppd - TS_coupon
     
-    output += (f"\n\nOptimal coupon discount: {best_discount}\n"
-                f"List Price: {posted_price}\n"
-                f"Coupon Price: {coupon_price}\n"
-                f"Producer Surplus: {best_PS_total}\n"
-                f"Consumer Surplus: {CS}\n"
+    output += (f"\nOptimal coupon discount: {best_discount}\n"
+                f"List Price: {posted_price} & Coupon Price: {coupon_price}\n"
+                f"Producer Surplus: {best_PS_total} & Consumer Surplus: {CS}\n"
                 f"Total Surplus: {TS_coupon}\n"
                 f"Deadweight Loss: {DWL}")
 
