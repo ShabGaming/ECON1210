@@ -72,10 +72,10 @@ def Negotiation(df, cost_neg_beneficiary=None, cost_neg_affected=None):
     output.append(f"AffectedPerson has full rights (Beneficiary liable) (negotiation costs are negligible), Process Chosen: {chosen_when_beneficiary_liable_zero_cost}")
     
     if chosen_when_beneficiary_not_liable_with_affected_cost is not None:
-        output.append(f"Beneficiary has full rights (Not liable) (negotiation costs for Affected Entity = {cost_neg_affected}), Process Chosen: {chosen_when_beneficiary_not_liable_with_affected_cost}")
+        output.append(f"  - Beneficiary has full rights (Not liable) (negotiation costs for Affected Entity = {cost_neg_affected}), Process Chosen: {chosen_when_beneficiary_not_liable_with_affected_cost}")
         
     if chosen_when_beneficiary_liable_with_beneficiary_cost is not None:
-        output.append(f"AffectedPerson has full rights (Beneficiary liable) (negotiation costs for Beneficiary = {cost_neg_beneficiary}), Process Chosen: {chosen_when_beneficiary_liable_with_beneficiary_cost}")
+        output.append(f"  - AffectedPerson has full rights (Beneficiary liable) (negotiation costs for Beneficiary = {cost_neg_beneficiary}), Process Chosen: {chosen_when_beneficiary_liable_with_beneficiary_cost}")
 
     return "\n".join(output)
 
