@@ -153,7 +153,8 @@ def PriceDiscrimination(df, MC, FixedCost=0, CouponBreakPoint=None):
                     best_sold_count = Q
 
         # Construct output (with coupon scenario)
-        result2 = (f"To maximize profit: list price at {best_list_price:.2f} and discount price at {best_discount_price:.2f}.\n"
+        result2 = (f"Optimal Coupon Discount: {best_list_price - best_discount_price:.2f}\n"
+                  f"To maximize profit: list price at {best_list_price:.2f} and discount price at {best_discount_price:.2f}.\n"
                   f"Serve {best_sold_count} customers, and make a profit of {best_profit:.2f}\n"
                   f"Consumer Surplus = {best_cs:.2f}, Producer Surplus = {best_ps:.2f}, DWL = {best_dwl:.2f}")
         return result + '\n' + '----------------------------------------------------' + '\n' + result2
