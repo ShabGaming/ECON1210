@@ -41,6 +41,9 @@ def calculate_total_production(working_hours, num_assigned, item, df):
 
     # Return a string with the total production
     answer = {'hats': round(total_hats, 2), 'ties': round(total_ties, 2)}
+
+    # convert the dictionary to a string for output
+    answer = ', '.join([f"{value} {key}" for key, value in answer.items()])
     return answer
 
 calculate_total_production(arg1, arg2, arg3, arg4)
