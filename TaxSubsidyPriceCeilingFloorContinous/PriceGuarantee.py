@@ -100,6 +100,6 @@ def PriceGuarantee(demand_eq, supply_eq, promise_to_buy_at, storage_cost):
     return (f"Market Equilibrium Price: {float(P_eq):.2f}, and Quantity: {float(Q_eq):.2f}\n"
             f"Government needs to buy: {float(Q_gov):.2f}\n"
             f"Producer Surplus: {float(PS_expr):.2f}, and Consumer Surplus: {float(CS_expr):.2f}\n"
-            f"total cost to Gov (including storage cost): {float(gov_cost):.2f}")
+            f"Total cost to Gov (including storage cost): {float(gov_cost):.2f}")
 
 PriceGuarantee(arg1, arg2, arg3, arg4)
