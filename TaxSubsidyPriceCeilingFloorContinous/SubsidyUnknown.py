@@ -77,9 +77,9 @@ def CalculateSubsidy(demand_eq: str, supply_eq: str, increase_Q=None, max_DWL=No
             s_increase_f = s_increase.evalf()
             s_increase_f = round(s_increase_f, 2)
 
-            results.append(f"Subsidy to increase by {increase_Q}: {s_increase_f}")
+            results.append(f"Subsidy to increase Q by {increase_Q}: {s_increase_f}")
         else:
-            results.append(f"Subsidy to increase by {increase_Q}: No solution found")
+            results.append(f"Subsidy to increase Q by {increase_Q}: No solution found")
 
     # If max_DWL is given and market is linear:
     if max_DWL is not None:
