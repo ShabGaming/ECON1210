@@ -128,4 +128,4 @@ def PerfectPriceDiscrimination(df, MC, FixedCost=None, CouponBreakPoint=None):
 
     return output
 
-# PerfectPriceDiscrimination(arg1, arg2, arg3, arg4)
+PerfectPriceDiscrimination(arg1, arg2, arg3, arg4)
