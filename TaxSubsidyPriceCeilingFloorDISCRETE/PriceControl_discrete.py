@@ -1,16 +1,23 @@
+import pandas as pd
+
 def PriceControl(price_ceiling=None, price_floor=None, df=None):
+    # Set the first row as column headers
     df.columns = df.iloc[0]
+    # Remove the first row
     df = df[1:]
-
+    # Reset the index to start from 0
+    df = df.reset_index(drop=True)
+    
     print(df)
-
+    
     # Ensure the DataFrame has the correct columns
     if df is None or not set(['Price', 'Quantity Demanded', 'Quantity Supplied']).issubset(df.columns):
         return ""
-
+    
     ceiling_result = None
     floor_result = None
 
+    # Handle price ceiling and floor being zero
     if price_ceiling == 0:
         price_ceiling = None
     if price_floor == 0:
