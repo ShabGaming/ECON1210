@@ -121,6 +121,8 @@ def PerfectPriceDiscrimination(df, MC, FixedCost=None, CouponBreakPoint=None):
     DWL = TS_ppd - TS_coupon
     
     output += (f"\n\nOptimal coupon discount: {best_discount}\n"
+                f"List Price: {posted_price}\n"
+                f"Coupon Price: {coupon_price}\n"
                 f"Producer Surplus: {best_PS_total}\n"
                 f"Consumer Surplus: {CS}\n"
                 f"Total Surplus: {TS_coupon}\n"
