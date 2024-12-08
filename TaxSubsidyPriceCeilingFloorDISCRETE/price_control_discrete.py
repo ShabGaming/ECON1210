@@ -2,9 +2,11 @@ def PriceControl(price_ceiling=None, price_floor=None, df=None):
     df.columns = df.iloc[0]
     df = df[1:]
 
+    print(df)
+
     # Ensure the DataFrame has the correct columns
     if df is None or not set(['Price', 'Quantity Demanded', 'Quantity Supplied']).issubset(df.columns):
-        raise ValueError("DataFrame must contain 'Price', 'Quantity Demanded', and 'Quantity Supplied' columns.")
+        return ""
 
     ceiling_result = None
     floor_result = None

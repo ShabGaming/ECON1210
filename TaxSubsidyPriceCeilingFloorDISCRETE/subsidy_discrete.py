@@ -1,15 +1,17 @@
 import pandas as pd
 
 def SubsidyDiscrete(subsidy, df):
-    
+
     df.columns = df.iloc[0]
     df = df[1:]
 
+    print(df)
+
     # If subsidy is empty or not a number, or df is empty or not numeric reutrn nothing
     if not isinstance(subsidy, (int, float)) or subsidy < 0:
-        return
+        return ""
     if not isinstance(subsidy, pd.DataFrame) or df.empty:
-        return
+        return ""
 
     # Ensure the DataFrame has the correct columns
     if not set(['Price', 'Quantity Demanded', 'Quantity Supplied']).issubset(df.columns):
@@ -33,6 +35,6 @@ def SubsidyDiscrete(subsidy, df):
                     f"Units transacted: {units_transacted}, "
                     f"Gov Subsidy Expense: {gov_subsidy}")
 
-    return
+    return ""
 
 SubsidyDiscrete(arg1, arg2)

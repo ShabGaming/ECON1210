@@ -5,6 +5,8 @@ def TaxDiscrete(tax, df):
     df.columns = df.iloc[0]
     df = df[1:]
 
+    print(df)
+
     # If tax is empty or not a number, or df is empty or not numeric reutrn nothing
     if not isinstance(tax, (int, float)) or tax < 0:
         return
@@ -33,6 +35,6 @@ def TaxDiscrete(tax, df):
                     f"Units transacted: {units_transacted}, "
                     f"Gov Revenue: {gov_revenue}")
 
-    return
+    return ""
 
 TaxDiscrete(arg1, arg2)
